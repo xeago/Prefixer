@@ -66,7 +66,7 @@
         {
             brackets--;
         }
-        else if ([tok isInteger])
+        else if ([tok isOperand])
         {
             cur = [[Node alloc] initWithIntegerString:(NSString*)tok];
             

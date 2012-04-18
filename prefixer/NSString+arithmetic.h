@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (arithmetic)
-- (BOOL) isInteger;
+- (BOOL) isOperand;
 - (BOOL) isOperator;
 - (BOOL) isOpenBracket;
 - (BOOL) isCloseBracket;

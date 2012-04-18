@@ -10,9 +10,9 @@
 
 @implementation NSString (arithmetic)
 
-- (BOOL) isInteger
+- (BOOL) isOperand
 {
-    NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    NSCharacterSet* nonNumbers = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     NSRange r = [self rangeOfCharacterFromSet: nonNumbers];
     return r.location == NSNotFound;
 }
