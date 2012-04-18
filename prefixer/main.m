@@ -7,16 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Node.h"
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
+        Node* node= [Node makeTreeFromInfixString:@"1 + 2 / 3 * 4"];
         
-        // insert code here...
-        NSLog(@"Hello, World!");
-        
+        NSLog(@"%@",node);
     }
     return 0;
 }
-

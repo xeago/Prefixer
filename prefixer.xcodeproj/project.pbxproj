@@ -10,6 +10,8 @@
 		E58624A6153EFF0700771AE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58624A5153EFF0700771AE0 /* Foundation.framework */; };
 		E58624A9153EFF0700771AE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E58624A8153EFF0700771AE0 /* main.m */; };
 		E58624AD153EFF0700771AE0 /* prefixer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E58624AC153EFF0700771AE0 /* prefixer.1 */; };
+		E58624B5153F029800771AE0 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = E58624B4153F029800771AE0 /* Node.m */; };
+		E58624B8153F169300771AE0 /* NSString+arithmetic.m in Sources */ = {isa = PBXBuildFile; fileRef = E58624B7153F169300771AE0 /* NSString+arithmetic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +31,12 @@
 		E58624A1153EFF0700771AE0 /* prefixer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = prefixer; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58624A5153EFF0700771AE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E58624A8153EFF0700771AE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E58624AB153EFF0700771AE0 /* prefixer-Prefix.pch */ = {isa = PBXFileReference; path = "prefixer-Prefix.pch"; sourceTree = "<group>"; };
+		E58624AB153EFF0700771AE0 /* prefixer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "prefixer-Prefix.pch"; sourceTree = "<group>"; };
 		E58624AC153EFF0700771AE0 /* prefixer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = prefixer.1; sourceTree = "<group>"; };
+		E58624B3153F029800771AE0 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		E58624B4153F029800771AE0 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		E58624B6153F169300771AE0 /* NSString+arithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+arithmetic.h"; sourceTree = "<group>"; };
+		E58624B7153F169300771AE0 /* NSString+arithmetic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+arithmetic.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				E58624A8153EFF0700771AE0 /* main.m */,
+				E58624B3153F029800771AE0 /* Node.h */,
+				E58624B4153F029800771AE0 /* Node.m */,
+				E58624B6153F169300771AE0 /* NSString+arithmetic.h */,
+				E58624B7153F169300771AE0 /* NSString+arithmetic.m */,
 				E58624AC153EFF0700771AE0 /* prefixer.1 */,
 				E58624AA153EFF0700771AE0 /* Supporting Files */,
 			);
@@ -139,6 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58624A9153EFF0700771AE0 /* main.m in Sources */,
+				E58624B5153F029800771AE0 /* Node.m in Sources */,
+				E58624B8153F169300771AE0 /* NSString+arithmetic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
