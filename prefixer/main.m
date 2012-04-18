@@ -14,7 +14,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         Node* node= [Node makeTreeFromInfixString:@"1 + 2 / 3 * 4"];
         
-        NSLog(@"%@",node);
+        NSLog(@"%@",[Node prefixFromTree:node]);
     }
     return 0;
 }

@@ -26,5 +26,44 @@
                 ));
 }
 
+- (BOOL) isOpenBracket
+{
+    return [self isEqualToString:@"("];
+}
+
+- (BOOL) isCloseBracket
+{
+    return [self isEqualToString:@")"];
+}
+
+- (NSInteger) getPrecedence
+{
+    switch ([self characterAtIndex:0]) {
+            //return ordered numbers arbitrarily chosen
+            //leaving room for any additional operators
+        case '*':
+            return 4;
+            break;
+        case '/':
+            return 4;
+            break;
+        case '+':
+            return 1;
+            break;
+        case '-':
+            return 1;
+            break;
+    }
+    return 0;
+}
+
+- (NSInteger) getPrecedenceFor:(NSInteger)brackets
+{
+    //10 because it is bigger than 4
+    //allows combinations of brackets and the priority of an operator
+    //to be easily read by humans
+    return brackets * -10 + [self getPrecedence];
+}
+
 
 @end

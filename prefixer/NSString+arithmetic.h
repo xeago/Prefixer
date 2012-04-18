@@ -11,4 +11,9 @@
 @interface NSString (arithmetic)
 - (BOOL) isInteger;
 - (BOOL) isOperator;
+- (BOOL) isOpenBracket;
+- (BOOL) isCloseBracket;
+- (NSInteger) getPrecedence;
+- (NSInteger) getPrecedenceFor:(NSInteger)brackets;
+
 @end
