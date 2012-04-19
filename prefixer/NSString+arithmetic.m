@@ -26,12 +26,12 @@
                 ));
 }
 
-- (BOOL) isOpenBracket
+- (BOOL) isOpenParentheses
 {
     return [self isEqualToString:@"("];
 }
 
-- (BOOL) isCloseBracket
+- (BOOL) isCloseParentheses
 {
     return [self isEqualToString:@")"];
 }

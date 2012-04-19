@@ -57,12 +57,11 @@
         NSString *tok=[tokens objectAtIndex:i];
         
         
-        
-        if ([tok isOpenBracket])
+        if ([tok isOpenParentheses])
         {
             brackets++;
         }
-        else if ([tok isCloseBracket])
+        else if ([tok isCloseParentheses])
         {
             brackets--;
         }
@@ -91,9 +90,9 @@
                 
                 int l=[node.element getPrecedenceFor:node.brackets], r=[tok getPrecedenceFor:brackets];
                 
-                //if the new element on the right has a higher or equal priority (equal=>right to left)
+                //if the new element on the right has a higher (equal=>right to left)
                 //add it lower on the tree
-                if (r>=l)
+                if (r > l)
                 {
                     
                     
@@ -114,8 +113,13 @@
             }
         }
         
+        Node* root=node;
+        while(root.parent) root=root.parent;
+        NSLog(@"%@ || %@",tok,[Node prefixFromTree:root]);
+        
         i++;
     }
+    
     
     
     //traverse to root    
