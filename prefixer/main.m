@@ -12,9 +12,10 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        Node* node= [Node makeTreeFromInfixString:@"1 + 2 / 3 * 4"];
+        Node* node = [Node makeTreeFromInfixString:@"( 1 + 1 ) / 2 * 4"];
         
         NSLog(@"%@",[Node prefixFromTree:node]);
     }
+    
     return 0;
 }

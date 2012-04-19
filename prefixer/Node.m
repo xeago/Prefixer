@@ -92,7 +92,7 @@
                 
                 //if the new element on the right has a higher (equal=>right to left)
                 //add it lower on the tree
-                if (r > l)
+                if (r >= l)
                 {
                     
                     
