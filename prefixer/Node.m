@@ -121,11 +121,11 @@
             [NSException raise:@"Invalid token" format:@"Token '%@' is invald!",tok];
         }
         
-        /*
+        
          Node* root=node;
          while(root.parent) root=root.parent;
-         NSLog(@"t%@ | n%@ b%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
-         */
+         NSLog(@"t%@ | n%@%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
+         
         
         
         i++;
