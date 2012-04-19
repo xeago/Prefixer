@@ -13,7 +13,7 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        Node* node = [Node makeTreeFromInfixString:@"3 * 8 + ( 9 + 2 * ( 5 + 1 ) ) / ( 3 * 8 + ( 9 + 2 * ( 5 + 1 ) ) / 4 )"];
+        Node* node = [Node makeTreeFromInfixString:@"( x * x + x * 2 + 1 ) / ( x + 1 )"];
         
         //NSLog(@"%@",[Node prefixFromTree:node]);
         printf("%s",[[Node prefixFromTree:node]cStringUsingEncoding:NSUTF8StringEncoding]);
