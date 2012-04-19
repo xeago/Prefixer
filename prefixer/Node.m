@@ -69,7 +69,7 @@
         {
             cur = [[Node alloc] initWithIntegerString:(NSString*)tok];
             
-            if (node.isOperator) {
+            if (node.isOperator) { // this operand must be a terminator so don't do node=cur;
                 node.right=cur;
             } else {
                 node.left=cur;
@@ -90,32 +90,43 @@
                 
                 int l=[node.element getPrecedenceFor:node.brackets], r=[tok getPrecedenceFor:brackets];
                 
-                //if the new element on the right has a higher (equal=>right to left)
-                //add it lower on the tree
-                if (r >= l)
+                
+                // if the new node has a higher precedence, use right as our left and replace the current right with ourselfs
+                if (r>l)
                 {
-                    
-                    
-                    Node* lowestorequalprioritynode=node;
-                    
-                    while ([lowestorequalprioritynode.element getPrecedenceFor:node.brackets] <= r && lowestorequalprioritynode.parent)
-                        lowestorequalprioritynode=lowestorequalprioritynode.parent;
-                    
-                    cur.left=lowestorequalprioritynode.right;
-                    lowestorequalprioritynode.right=cur;
-                    node=cur; 
-                }
-                else {
                     cur.left=node.right;
                     node.right=cur;
                     node=cur;
                 }
+                else {
+                    //retrieve the parents of node that has higher precedence untill it is lower than ours
+                    Node*parent=node;
+                    while([parent.element getPrecedenceFor:parent.brackets]>r)
+                        parent=parent.parent;
+                    
+                    if (parent){
+                        Node*buf=parent.right;
+                        parent.right=cur;
+                        cur.left=buf;
+                    }
+                    else {//edge case: we've reached to top of the tree
+                        cur.left=node;
+                    }
+                    
+                    node=cur;
+                }
             }
         }
+        else {
+            [NSException raise:@"Invalid token" format:@"Token '%@' is invald!",tok];
+        }
         
-        Node* root=node;
-        while(root.parent) root=root.parent;
-        NSLog(@"%@ || %@",tok,[Node prefixFromTree:root]);
+        /*
+         Node* root=node;
+         while(root.parent) root=root.parent;
+         NSLog(@"t%@ | n%@ b%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
+         */
+        
         
         i++;
     }
@@ -151,10 +162,13 @@
         left=[Node prefixFromTree:root.left];
     if (root.right)
         right=[Node prefixFromTree:root.right];
-    NSString* result=[NSString stringWithFormat:@"%@ %@%@",element,left,right];
     
+    NSString* result;
+    if (!root.isOperator)
+        result = [NSString stringWithFormat:@"%@",element];
+    else 
+        result = [NSString stringWithFormat:@"(%@ %@ %@)",element,left,right];
     return result;
-    
 }
 
 @end

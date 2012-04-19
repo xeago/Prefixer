@@ -62,7 +62,7 @@
     //10 because it is bigger than 4
     //allows combinations of brackets and the priority of an operator
     //to be easily read by humans
-    return brackets * -10 + [self getPrecedence];
+    return brackets * 10 + [self getPrecedence];
 }
 
 
