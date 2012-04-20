@@ -101,10 +101,17 @@
                 else {
                     //retrieve the parents of node that has higher precedence untill it is lower than ours
                     Node*parent=node;
-                    while([parent.element getPrecedenceFor:parent.brackets]>r)
+                    int lprec=[parent.element getPrecedenceFor:parent.brackets];
+                    while(lprec>=r)
+                    {
+                        node=parent;
                         parent=parent.parent;
+                        lprec=[parent.element getPrecedenceFor:parent.brackets];
+                    }
                     
                     if (parent){
+                        //cur.left=parent;
+                        
                         Node*buf=parent.right;
                         parent.right=cur;
                         cur.left=buf;
@@ -122,10 +129,10 @@
         }
         
         
-         Node* root=node;
-         while(root.parent) root=root.parent;
-         NSLog(@"t%@ | n%@%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
-         
+        Node* root=node;
+        while(root.parent) root=root.parent;
+        NSLog(@"t%@ | n%@%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
+        
         
         
         i++;
