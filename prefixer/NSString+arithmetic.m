@@ -16,6 +16,19 @@
     NSRange r = [self rangeOfCharacterFromSet: nonNumbers];
     return r.location == NSNotFound;
 }
+
+- (BOOL) isNumber
+{
+    if ([self length]>0)
+    {
+        if ([self characterAtIndex:0]=='-')
+            return [[self substringFromIndex:1] isNumber];
+    }
+    
+    NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    NSRange r = [self rangeOfCharacterFromSet: nonNumbers];
+    return r.location == NSNotFound;
+}
 - (BOOL) isOperator
 {
     return ([self length]==1
