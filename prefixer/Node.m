@@ -196,6 +196,11 @@
         //just variables
         return self;
     }
+    
+    // x + 1 - x can be reduced to 1
+    // I am leaving these out due to complexity
+    // implement commutativity here!
+    
     // BUHU! no numbers, cannot reduce :'(
     return self;
 }
@@ -220,6 +225,9 @@
         //just variables
         return self;
     }
+    
+    // implement commutativity here
+    
     // BUHU! no numbers, cannot reduce :'(
     return self;
 }
@@ -249,6 +257,7 @@
     
     // 5 * (3 + x) can be reduced to 15 + 5 * x
     // I am leaving these out due to complexity
+    // implement commutativity here!
     
     // BUHU! no numbers, cannot reduce :'(
     return self;
@@ -273,6 +282,9 @@
         
         return self;
     }
+
+    // implement commutativity here
+
     
     // BUHU! no numbers, cannot reduce :'(
     return self;

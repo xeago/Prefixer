@@ -40,6 +40,22 @@
     STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
 }
 
+- (void)testPrefixTreMultiOperand0
+{
+    Node* node = [Node makeTreeFromInfixString:@"1 + 3 + 4"];
+    NSString* actual = [node prefixTree];
+    NSString* expected=@"(+ (+ 1 3) 4)";
+    STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
+}
+
+- (void)testPrefixTreMultiOperand1
+{
+    Node* node = [Node makeTreeFromInfixString:@"1 * 3 + 4"];
+    NSString* actual = [node prefixTree];
+    NSString* expected=@"(+ (* 1 3) 4)";
+    STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
+}
+
 - (void)testPrefixTreeComplexOperand0
 {
     Node* node = [Node makeTreeFromInfixString:@"2 * ( 5 + 1 )"];
