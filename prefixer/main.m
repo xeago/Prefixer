@@ -22,7 +22,7 @@ int main(int argc, const char * argv[])
         }
         
         int argp=0;
-        BOOL shouldReduce;
+        BOOL shouldReduce=NO;
         
         // EXTREMELY BASIC OPTION PARSING >.<
         if (argc>2 && argv[1][0] == '-')
