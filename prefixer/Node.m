@@ -129,12 +129,6 @@
         }
         
         
-        Node* root=node;
-        while(root.parent) root=root.parent;
-        NSLog(@"t%@ | n%@%ld | %@",tok,node.element,node.brackets,[Node prefixFromTree:root]);
-        
-        
-        
         i++;
     }
     
@@ -178,4 +172,164 @@
     return result;
 }
 
+
+
+
+
+-(Node*) reducePlus{
+    self.left=[self.left reduce];
+    self.right=[self.right reduce];
+    Node *left=self.left,*right=self.right;
+    
+    if (!left.isOperator && !right.isOperator) // do we have numbers?
+    {
+        //Yay we have atleast 1 number
+        if ([left.element isNumber] && [right.element isNumber]) // do we have 2?
+        { // return the sum;
+            return [[Node alloc] initWithIntegerString:[NSString stringWithFormat:@"%i",[left.element intValue]+[right.element intValue]]];
+        }
+        else if ([left.element isNumber] && [left.element intValue]==0)
+            return right;
+        else if ([right.element isNumber] && [right.element intValue]==0)
+            return left;
+        
+        //just variables
+        return self;
+    }
+    // BUHU! no numbers, cannot reduce :'(
+    return self;
+}
+
+-(Node*) reduceMinus{
+    self.left=[self.left reduce];
+    self.right=[self.right reduce];
+    Node *left=self.left,*right=self.right;
+    
+    if (!left.isOperator && !right.isOperator) // do we have numbers?
+    {
+        //Yay we have atleast 1 number
+        if ([left.element isNumber] && [right.element isNumber]) // do we have 2?
+        { // return the substraction;
+            return [[Node alloc] initWithIntegerString:[NSString stringWithFormat:@"%i",[left.element intValue]-[right.element intValue]]];
+        }
+        else if ([left.element isNumber] && [left.element intValue]==0)
+            return right;
+        else if ([right.element isNumber] && [right.element intValue]==0)
+            return left;
+        
+        //just variables
+        return self;
+    }
+    // BUHU! no numbers, cannot reduce :'(
+    return self;
+}
+
+-(Node*) reduceTimes{
+    self.left=[self.left reduce];
+    self.right=[self.right reduce];
+    Node *left=self.left,*right=self.right;
+    
+    if (!left.isOperator && !right.isOperator) // do we have numbers?
+    {
+        //Yay we have atleast 1 number
+        if ([left.element isNumber] && [right.element isNumber]) // do we have 2?
+        { // return the multiplication;
+            return [[Node alloc] initWithIntegerString:[NSString stringWithFormat:@"%i",[left.element intValue]*[right.element intValue]]];
+        }
+        else if (([left.element isNumber] && [left.element intValue]==0 ) || ([right.element isNumber] && [right.element intValue]==0))
+            return [[Node alloc] initWithIntegerString:@"0"];
+        else if ([left.element isNumber] && [left.element intValue]==1)
+            return right;
+        else if ([right.element isNumber] && [right.element intValue]==1)
+            return left;
+        
+        //just variables
+        return self;
+    }
+    
+    // 5 * (3 + x) can be reduced to 15 + 5 * x
+    // I am leaving these out due to complexity
+    
+    // BUHU! no numbers, cannot reduce :'(
+    return self;
+}
+
+
+-(Node*) reduceDivision{
+    self.left=[self.left reduce];
+    self.right=[self.right reduce];
+    Node *left=self.left,*right=self.right;
+    
+    if (!left.isOperator && !right.isOperator) // do we have numbers?
+    {
+        //Yay we have atleast 1 number
+        if ([left.element isNumber] && [right.element isNumber]) // do we have 2?
+        { // return the multiplication;
+            return [[Node alloc] initWithIntegerString:[NSString stringWithFormat:@"%i",[left.element intValue]/[right.element intValue]]];
+        }
+        else if ([right.element isNumber] && [right.element intValue]==1)
+            return left;
+        //in computing, infinity does not really exist
+        
+        return self;
+    }
+    
+    // BUHU! no numbers, cannot reduce :'(
+    return self;
+}
+
+
+
+#define REDUCE_DIVIDE_INT
+-(Node*) reduce
+{
+    //if we are an operand, we are a terminator, simply return self;
+    if (!self.isOperator)
+        return self;
+    else
+    {
+        Node * result;
+        unichar operator= [self.element characterAtIndex:0];
+        
+        switch (operator) {
+            case '-':
+                result = [self reduceMinus];
+                break;
+            case '+':
+                result = [self reducePlus];
+                break;
+            case '/':
+                result = [self reduceDivision];
+                break;
+            case '*':
+                result = [self reduceTimes];
+                break;
+            default:
+                result=self;
+                break;
+        }
+        
+        if (result.isOperator) {
+        
+            //if left and right are resolved to equal strings we can do some computations
+            if ([[result.left prefixTree] isEqualToString:[result.right prefixTree]])
+            {
+                switch ([self.element characterAtIndex:0]) {
+                    case '-':
+                        return [[Node alloc] initWithIntegerString:@"0"];
+                        break;
+                    case '/':
+                        return [[Node alloc] initWithIntegerString:@"1"];
+                        break;
+                }
+            }
+        }
+        
+        
+        return result;
+        
+    }
+    
+    return self;
+}            
 @end

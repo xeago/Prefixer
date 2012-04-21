@@ -11,13 +11,46 @@
 
 int main(int argc, const char * argv[])
 {
-
+    
     @autoreleasepool {
-        //Node* node = [Node makeTreeFromInfixString:@"3 * x + ( 9 + y ) / 4"];
-        Node* node = [Node makeTreeFromInfixString:@"( x * x + x * 2 + 1 ) / ( x + 1 )"];
         
-        //NSLog(@"%@",[Node prefixFromTree:node]);
-        printf("%s\n",[[Node prefixFromTree:node] cStringUsingEncoding:NSUTF8StringEncoding]);
+        //check for correct input
+        if (argc==1 || argc>3)
+        {
+            printf("Incorrect number of arguments!\n");
+            return 0;
+        }
+        
+        int argp=0;
+        BOOL shouldReduce;
+        
+        // EXTREMELY BASIC OPTION PARSING >.<
+        if (argc>2 && argv[1][0] == '-')
+        {
+            argp++;
+            if (argv[1][1]=='r')
+                shouldReduce=YES;
+        }
+        
+        NSString* filepath= [NSString stringWithCString:argv[1+argp] encoding:NSUTF8StringEncoding];
+                
+        NSError* err;
+        
+        NSString* read = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&err];
+        
+        if (err)
+        {
+            printf("Error reading file: %s.\n",argv[1+argp]);
+            return 0;
+        }
+        
+        
+        Node* node = [Node makeTreeFromInfixString:read];
+        
+        if (shouldReduce)
+            node=[node reduce];
+        
+        printf("%s\n",[[node prefixTree] cStringUsingEncoding:NSUTF8StringEncoding]);
     }
     
     return 0;
