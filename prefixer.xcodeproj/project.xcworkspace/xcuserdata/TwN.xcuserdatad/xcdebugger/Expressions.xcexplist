@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "main:main.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[Node reduce]:Node.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.element">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[Node makeTreeFromInfixString:]:Node.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "cur">
+            </PersistentString>
+            <PersistentString
+               value = "node">
+            </PersistentString>
+            <PersistentString
+               value = "node.element">
+            </PersistentString>
+            <PersistentString
+               value = "tok">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
