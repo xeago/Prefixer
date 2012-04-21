@@ -158,20 +158,20 @@
     _right.parent=self;
 }
 
-+(NSString*)prefixFromTree:(Node*)root{
+-(NSString*)prefixTree{
     
     NSString* element=@"";
     NSString* left=@"";
     NSString* right=@"";
     
-    element=root.element;
-    if (root.left)
-        left=[Node prefixFromTree:root.left];
-    if (root.right)
-        right=[Node prefixFromTree:root.right];
+    element=self.element;
+    if (self.left)
+        left=[self.left prefixTree];
+    if (self.right)
+        right=[self.right prefixTree];
     
     NSString* result;
-    if (!root.isOperator)
+    if (!self.isOperator)
         result = [NSString stringWithFormat:@"%@",element];
     else 
         result = [NSString stringWithFormat:@"(%@ %@ %@)",element,left,right];

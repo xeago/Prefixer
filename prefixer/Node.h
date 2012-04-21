@@ -16,7 +16,8 @@
 @property (nonatomic,strong) Node* right;
 @property (nonatomic,strong) Node* parent;
 +(Node*) makeTreeFromInfixString:(NSString*)infix;
-+(NSString*)prefixFromTree:(Node*)root;
+-(NSString*)prefixTree;
+-(Node*) reduce;
 @end
 
 /********************************************
