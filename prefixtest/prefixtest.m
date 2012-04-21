@@ -206,6 +206,30 @@
     STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
 }
 
+- (void)testReduceVariable7
+{
+    Node* node = [Node makeTreeFromInfixString:@"( x * y ) / ( x * y )"];
+    NSString* actual = [[node reduce] prefixTree];
+    NSString* expected=@"1";
+    STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
+}
+
+- (void)testReduceVariable8
+{
+    Node* node = [Node makeTreeFromInfixString:@"( x * y ) - ( x * y )"];
+    NSString* actual = [[node reduce] prefixTree];
+    NSString* expected=@"0";
+    STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
+}
+
+- (void)testReduceVariable9
+{
+    Node* node = [Node makeTreeFromInfixString:@"( y * x ) / ( x * y )"];
+    NSString* actual = [[node reduce] prefixTree];
+    NSString* expected=@"1";
+    STAssertEqualObjects(actual, expected,@"Expected: %@ | Actual: %@",expected,actual);
+}
+
 - (void)testReduceCommutative1
 {
     Node* node = [Node makeTreeFromInfixString:@"1 + 1 + 3"];
