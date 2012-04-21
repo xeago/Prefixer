@@ -5,7 +5,7 @@ A commandline program writtin in Objective-C used to to output the prefix notati
 
     $ prefixer [-r] inputFile
 
-*inputfile* contains the the input expression for the program. The format of the input expression is highly restricted. All values are either single alphabetic characters or positive integers. All operators, including ( and ), are always separated by at least one space from other values  or operators. The optional -r paramater indicates whether the expression should be reduced. See the [problem discription](http://justin.tv/problems/prefixer/) for more information.
+*inputfile* contains the the input expression for the program. The format of the input expression is highly restricted. All values are either single alphabetic characters or positive integers. All operators, including ( and ), are always separated by at least one space from other values  or operators. The optional -r paramater indicates whether the expression should be reduced. See the [problem discription](http://justin.tv/problems/prefixer/) for more information. The file should contain only one line on which the expression is notated.
 
 # Implementation
 ## Strategy

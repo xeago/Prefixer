@@ -67,7 +67,10 @@
 		E5446A441541D843003CD265 /* prefixtest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = prefixtest.m; sourceTree = "<group>"; };
 		E5446A461541D843003CD265 /* prefixtest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "prefixtest-Prefix.pch"; sourceTree = "<group>"; };
 		E557D19F154320E500B05B41 /* exampleInput */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exampleInput; sourceTree = "<group>"; };
-		E557D1A4154329C100B05B41 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E557D1A4154329C100B05B41 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; path = readme.md; sourceTree = "<group>"; };
+		E557D1AE15437B3B00B05B41 /* exampleInput */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exampleInput; sourceTree = "<group>"; };
+		E557D1AF15437B3B00B05B41 /* prefixer */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = prefixer; sourceTree = "<group>"; };
+		E557D1B015437B3B00B05B41 /* readme.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = readme.pdf; sourceTree = "<group>"; };
 		E58624A1153EFF0700771AE0 /* prefixer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = prefixer; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58624A5153EFF0700771AE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E58624A8153EFF0700771AE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,10 +133,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E557D1AD15437B3B00B05B41 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				E557D1AE15437B3B00B05B41 /* exampleInput */,
+				E557D1AF15437B3B00B05B41 /* prefixer */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		E557D1B215437B4D00B05B41 /* readme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = readme;
+			path = bin;
+			sourceTree = "<group>";
+		};
 		E5862496153EFF0700771AE0 = {
 			isa = PBXGroup;
 			children = (
-				E557D1A4154329C100B05B41 /* README.md */,
+				E557D1B215437B4D00B05B41 /* readme */,
+				E557D1AD15437B3B00B05B41 /* bin */,
+				E557D1B015437B3B00B05B41 /* readme.pdf */,
+				E557D1A4154329C100B05B41 /* readme.md */,
 				E557D19F154320E500B05B41 /* exampleInput */,
 				E58624A7153EFF0700771AE0 /* prefixer */,
 				E5446A3D1541D843003CD265 /* prefixtest */,
